@@ -8,10 +8,21 @@ const Tab = createNativeStackNavigator<TypeRootStackParamList>()
 
 export const PrivateNavigation: React.FC = memo(() => {
 	return (
-		<Tab.Navigator screenOptions={{ headerShown: false }}>
+		<Tab.Navigator
+			initialRouteName={'Auth'}
+			screenOptions={{
+				headerShown: false,
+				contentStyle: {
+					backgroundColor: '#090909'
+				}
+			}}
+		>
 			{userRoutes.map(route => (
 				<Tab.Screen key={route.name} {...route} />
 			))}
+			{/*{adminRoutes.map(route => (*/}
+			{/*	<Tab.Screen key={route.name} {...route} />*/}
+			{/*))}*/}
 		</Tab.Navigator>
 	)
 })
