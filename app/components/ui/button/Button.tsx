@@ -17,6 +17,7 @@ export const Button: React.FC<PropsWithChildren<IButtonProps>> = memo(
 			<Pressable
 				className={cn(
 					'items-center justify-center flex-row bg-red rounded-lg w-full  py-1 px-3',
+
 					className
 				)}
 				{...rest}

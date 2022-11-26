@@ -4,7 +4,7 @@ import { IRoute } from '@/navigation/Navigation.types'
 
 export const adminRoutes: IRoute[] = [
 	{
-		name: 'Home',
+		name: 'Admin',
 		component: Admin,
 		isAdmin: true
 	}

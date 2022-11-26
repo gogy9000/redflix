@@ -1,15 +1,21 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import React, { memo } from 'react'
 
+import { Auth } from '@/components/screens/Auth'
+
+import { useAuth } from '@/hooks/useAuth'
+
 import { TypeRootStackParamList } from '@/navigation/Navigation.types'
 import { userRoutes } from '@/navigation/routes/User.routes'
+import { routes } from '@/navigation/routes/routes'
 
-const Tab = createNativeStackNavigator<TypeRootStackParamList>()
+const Stack = createNativeStackNavigator<TypeRootStackParamList>()
 
 export const PrivateNavigation: React.FC = memo(() => {
+	const { user } = useAuth()
 	return (
-		<Tab.Navigator
-			initialRouteName={'Auth'}
+		<Stack.Navigator
+			initialRouteName={'Test'}
 			screenOptions={{
 				headerShown: false,
 				contentStyle: {
@@ -17,12 +23,15 @@ export const PrivateNavigation: React.FC = memo(() => {
 				}
 			}}
 		>
-			{userRoutes.map(route => (
-				<Tab.Screen key={route.name} {...route} />
-			))}
-			{/*{adminRoutes.map(route => (*/}
-			{/*	<Tab.Screen key={route.name} {...route} />*/}
-			{/*))}*/}
-		</Tab.Navigator>
+			{user ? (
+				user.isAdmin ? (
+					routes.map(route => <Stack.Screen key={route.name} {...route} />)
+				) : (
+					userRoutes.map(route => <Stack.Screen key={route.name} {...route} />)
+				)
+			) : (
+				<Stack.Screen name='Auth' component={Auth} />
+			)}
+		</Stack.Navigator>
 	)
 })

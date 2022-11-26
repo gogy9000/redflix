@@ -15,6 +15,8 @@
 		"@react-navigation/native-stack": "^6.9.2",
 		"clsx": "^1.2.1",
 		"expo": "~47.0.8",
+		"expo-secure-store": "~12.0.0",
+		"expo-splash-screen": "~0.17.5",
 		"expo-status-bar": "~1.4.2",
 		"nativewind": "^2.0.11",
 		"react": "18.1.0",
