@@ -19,7 +19,7 @@ export const Layout: React.FC<PropsWithChildren<ILayout>> = memo(
 						'px-6': isHasPadding
 					})}
 					style={{
-						paddingTop: Platform.OS === 'ios' ? top / 6 : top * 1.7,
+						paddingTop: Platform.OS === 'ios' ? top / 6 : top * 0.3,
 						...style
 					}}
 				>

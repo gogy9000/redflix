@@ -8,6 +8,8 @@ import { BottomMenu } from '@/components/ui/layout/bottom-menu/BottomMenu'
 
 import { useAuth } from '@/hooks/useAuth'
 
+import { useCheckAuth } from '@/providers/AuthProvider/useChekAuth'
+
 import { PrivateNavigation } from '@/navigation/PrivateNavigation'
 
 export const Navigation: React.FC = memo(() => {
@@ -25,16 +27,18 @@ export const Navigation: React.FC = memo(() => {
 			navigateRef.removeListener('state', listener)
 		}
 	}, [])
-
+	useCheckAuth(currentRoute)
 	return (
-		<NavigationContainer ref={navigateRef}>
-			<PrivateNavigation />
+		<>
+			<NavigationContainer ref={navigateRef}>
+				<PrivateNavigation />
+			</NavigationContainer>
 			{user && currentRoute && (
 				<BottomMenu
 					navigate={navigateRef.navigate}
 					currentRoute={currentRoute}
 				/>
 			)}
-		</NavigationContainer>
+		</>
 	)
 })
