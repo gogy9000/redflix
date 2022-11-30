@@ -1,4 +1,4 @@
-import { Admin } from '@/components/screens/admin/home/Admin'
+import { Admin } from '@/components/screens/admin/Admin'
 
 import { IRoute } from '@/navigation/Navigation.types'
 

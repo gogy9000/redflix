@@ -5,3 +5,7 @@ export interface IUser {
 	createdAt: string
 	isAdmin: boolean
 }
+export interface IGetProfileResponse extends IUser {
+	updatedAt: string
+	favorites: any[]
+}

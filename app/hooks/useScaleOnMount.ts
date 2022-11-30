@@ -1,0 +1,25 @@
+import { useEffect } from 'react'
+import {
+	useAnimatedStyle,
+	useSharedValue,
+	withSpring
+} from 'react-native-reanimated'
+
+export const useScaleOnMount = (dependency: any[]) => {
+	const scale = useSharedValue(0)
+	useEffect(() => {
+		scale.value = withSpring(1)
+
+		return () => {
+			scale.value = withSpring(0)
+		}
+	}, dependency)
+	const styleAnimation = useAnimatedStyle(() => ({
+		transform: [
+			{
+				scale: scale.value
+			}
+		]
+	}))
+	return { styleAnimation }
+}
