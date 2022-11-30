@@ -15,7 +15,6 @@ export const useLikeMovie = (movieId: string) => {
 		mutate(movieId)
 	}, [])
 	useEffect(() => {
-		console.log('isAddedMovies', isAddedMovies)
 		if (isAddedMovies) {
 			setIsAdded(isAddedMovies)
 		}
