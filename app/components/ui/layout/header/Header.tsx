@@ -11,7 +11,7 @@ export const Header: React.FC<IHeaderProps> = memo(({ className, title }) => {
 	return (
 		<Text
 			className={cn(
-				'text-white text-opacity-80 font-semibold text-3xl',
+				'ml-3 text-white text-opacity-80 font-semibold text-3xl',
 				className
 			)}
 			numberOfLines={1}
