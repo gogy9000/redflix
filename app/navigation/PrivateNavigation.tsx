@@ -15,7 +15,7 @@ export const PrivateNavigation: React.FC = memo(() => {
 	const { user } = useAuth()
 	return (
 		<Stack.Navigator
-			initialRouteName={'Favorites'}
+			initialRouteName={'Test'}
 			screenOptions={{
 				headerShown: false,
 				contentStyle: {

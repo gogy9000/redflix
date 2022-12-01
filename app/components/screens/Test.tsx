@@ -1,72 +1,82 @@
 import * as SecureStore from 'expo-secure-store'
 import React, { memo } from 'react'
 import { Text, TextInput, View } from 'react-native'
+import Animated, {
+	Easing,
+	useAnimatedStyle,
+	useSharedValue,
+	withRepeat,
+	withSequence,
+	withSpring,
+	withTiming
+} from 'react-native-reanimated'
 
 import { Button } from '@/components/ui/button/Button'
 import { Layout } from '@/components/ui/layout/Layout'
 import { Header } from '@/components/ui/layout/header/Header'
 
-async function save(key: string, value: string) {
-	await SecureStore.setItemAsync(key, value)
-}
-
-async function getValueFor(key: string) {
-	let result = await SecureStore.getItemAsync(key)
-	if (result) {
-		alert("🔐 Here's your value 🔐 \n" + result)
-	} else {
-		alert('No values stored under that key.')
-	}
-}
-
 interface ITestProps {}
 
 export const Test: React.FC<ITestProps> = memo(({}) => {
-	const [key, onChangeKey] = React.useState<string>('Your key here')
-	const [value, onChangeValue] = React.useState<string>('Your value here')
+	const offset = useSharedValue(0)
+	const rotation = useSharedValue(0)
+
+	const animatedStyle = useAnimatedStyle(() => {
+		return {
+			transform: [
+				{
+					translateX: withSpring(offset.value * 255)
+				}
+			]
+		}
+	})
+	const customAnimatedStyle = useAnimatedStyle(() => {
+		return {
+			transform: [
+				{ rotateZ: `${rotation.value}deg` }
+				// {
+				// 	translateX: withSpring(offset.value * 255, {
+				// 		damping: 20,
+				// 		stiffness: 90
+				// 	})
+				// }
+			]
+		}
+	})
 
 	return (
 		<Layout isHasPadding>
 			<Header title={'Test'} />
-			<View className={'flex-1 items-center justify-center'}>
-				<Text className={'text-white'}>Save an item, and grab it later!</Text>
-				<TextInput
-					className={'bg-white'}
-					onChangeText={e => {
-						onChangeKey(e)
-					}}
-					placeholder='Enter the key'
-					value={key}
-				/>
-				<TextInput
-					className={'bg-white'}
-					onChangeText={e => {
-						onChangeValue(e)
-					}}
-					placeholder='Enter the value'
-					value={value}
-				/>
-				<Button
-					onPress={() => {
-						save(key, value).catch(reason => {
-							alert(reason.toString())
-						})
-						onChangeKey('Your key here')
-						onChangeValue('Your value here')
-					}}
-				>
-					Save this key/value pair
-				</Button>
-
-				<Text className={'bg-white'}>🔐 Enter your key 🔐</Text>
-				<TextInput
-					className={'bg-white'}
-					onSubmitEditing={event => {
-						getValueFor(event.nativeEvent.text)
-					}}
-					placeholder='Enter the key for the value you want to get'
+			<View
+				className={
+					'w-full h-1/2 border-white border-2 mb-2 items-center justify-center'
+				}
+			>
+				{/*<Animated.View*/}
+				{/*	style={[*/}
+				{/*		{ width: 50, height: 50, backgroundColor: 'white' },*/}
+				{/*		animatedStyle*/}
+				{/*	]}*/}
+				{/*/>*/}
+				<Animated.View
+					style={[
+						{ width: 50, height: 50, backgroundColor: 'white' },
+						customAnimatedStyle
+					]}
 				/>
 			</View>
+			<Button
+				onPress={() => {
+					offset.value = Math.random()
+					rotation.value = withSequence(
+						withTiming(-10, { duration: 100 }),
+						withRepeat(withTiming(10, { duration: 100 }), 6, true),
+						withTiming(0, { duration: 100 })
+					)
+				}}
+			>
+				move
+			</Button>
 		</Layout>
 	)
 })
