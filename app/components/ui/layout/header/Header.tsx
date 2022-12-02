@@ -3,7 +3,7 @@ import React, { memo } from 'react'
 import { Text } from 'react-native'
 
 interface IHeaderProps {
-	title: string
+	title?: string
 	className?: string
 }
 
@@ -16,7 +16,7 @@ export const Header: React.FC<IHeaderProps> = memo(({ className, title }) => {
 			)}
 			numberOfLines={1}
 		>
-			{title}
+			{!!title ? title : null}
 		</Text>
 	)
 })

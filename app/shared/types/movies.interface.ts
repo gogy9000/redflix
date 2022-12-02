@@ -19,3 +19,4 @@ export interface IMovie {
 	rating: number
 	slug: string
 }
+export interface IMovieEditInput extends Omit<IMovie, '_id'> {}

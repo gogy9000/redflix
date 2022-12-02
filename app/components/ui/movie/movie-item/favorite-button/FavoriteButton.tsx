@@ -15,12 +15,12 @@ interface IFavoriteButton {
 
 export const FavoriteButton: FC<IFavoriteButton> = memo(
 	({ isSmall = false, movieId }) => {
-		const { addMovie, isAdded } = useLikeMovie(movieId)
+		const { toggleFavorite, isAdded } = useLikeMovie(movieId)
 		const { outlineStyle, fillStyle, liked } = useFavoriteAnimation(isAdded)
 
 		const onPressHandler = () => {
 			liked.value = withSpring(liked.value === 1 ? 0 : 1)
-			addMovie(movieId)
+			toggleFavorite(movieId)
 		}
 		return (
 			<BlurButton isSmall={isSmall} onPress={onPressHandler}>

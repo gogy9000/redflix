@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons'
 import React, { memo } from 'react'
-import { FlatList, ListRenderItem, Pressable, View } from 'react-native'
+import { Pressable, ScrollView, Text, View } from 'react-native'
 
 import { Description } from '@/components/ui/description/Description'
 import { Header } from '@/components/ui/layout/header/Header'
@@ -11,7 +11,7 @@ import { useTypedNavigation } from '@/hooks/useTypedNavigation'
 import { IMovie } from '@/shared/types/movies.interface'
 
 interface IMovieListProps {
-	title: string
+	title?: string
 	description?: string
 	movies?: IMovie[]
 	isBackButton?: boolean
@@ -21,20 +21,10 @@ export const MovieList: React.FC<IMovieListProps> = memo(
 	({ movies = [], title, description, isBackButton }) => {
 		const { goBack } = useTypedNavigation()
 
-		const renderItem: ListRenderItem<IMovie> = ({ item: movie, index }) => (
-			<MovieItem
-				rating={movie.rating}
-				slug={movie.slug}
-				title={movie.title}
-				poster={movie.poster}
-				movieId={movie._id}
-				index={index}
-			/>
-		)
 		return (
 			<>
 				<View className='flex-row items-center justify-between'>
-					<Header title={title} className={'mb-3'} />
+					{!!title ? <Header title={title} className={'mb-3'} /> : null}
 					{isBackButton && (
 						<Pressable className={'mr-3 '} onPress={goBack}>
 							<Ionicons
@@ -46,12 +36,26 @@ export const MovieList: React.FC<IMovieListProps> = memo(
 					)}
 				</View>
 				{description ? <Description text={description} /> : null}
-				<FlatList
-					data={movies}
-					keyExtractor={item => item._id}
-					renderItem={renderItem}
-					numColumns={2}
-				/>
+
+				<ScrollView showsVerticalScrollIndicator={false}>
+					<View className='flex-row flex-wrap justify-between mt-5 mb-32'>
+						{movies?.length ? (
+							movies.map((movie, index) => (
+								<MovieItem
+									key={movie._id}
+									rating={movie.rating}
+									slug={movie.slug}
+									title={movie.title}
+									poster={movie.poster}
+									movieId={movie._id}
+									index={index}
+								/>
+							))
+						) : (
+							<Text className='text-white text-lg'>Elements not found</Text>
+						)}
+					</View>
+				</ScrollView>
 			</>
 		)
 	}

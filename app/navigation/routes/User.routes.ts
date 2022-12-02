@@ -1,11 +1,11 @@
 import { Favorites } from '@/components/screens/Favorites'
 import { Profile } from '@/components/screens/Profile/Profile'
-import { Search } from '@/components/screens/Search'
 import { Test } from '@/components/screens/Test'
-import { Trending } from '@/components/screens/Trending'
 import { Genre } from '@/components/screens/genre/Genre'
 import { Home } from '@/components/screens/home/Home'
 import { Movie } from '@/components/screens/movie/Movie'
+import { Search } from '@/components/screens/search/Search'
+import { Trending } from '@/components/screens/trending/Trending'
 
 import { IRoute } from '@/navigation/Navigation.types'
 

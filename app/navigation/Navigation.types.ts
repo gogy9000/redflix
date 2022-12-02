@@ -12,6 +12,7 @@ export type TypeRootStackParamList = {
 	Screen404: undefined
 	Movie: { slug: string }
 	Genre: { slug: string }
+	Actor: { slug: string }
 } & AdminRootStackParamList
 type AdminRootStackParamList = {
 	Admin: undefined
