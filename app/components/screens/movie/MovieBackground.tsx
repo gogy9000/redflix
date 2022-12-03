@@ -1,9 +1,9 @@
 import { LinearGradient } from 'expo-linear-gradient'
 import React, { memo } from 'react'
 import {
+	Animated,
 	ImageBackground,
 	StyleSheet,
-	View,
 	useWindowDimensions
 } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -12,16 +12,37 @@ import { getMediaSource } from '@/utils/getMediaSource'
 
 interface IMovieBackgroundProps {
 	poster: string
+	scrollY: Animated.Value
 }
 
 export const MovieBackground: React.FC<IMovieBackgroundProps> = memo(
-	({ poster }) => {
+	({ poster, scrollY }) => {
 		const { height } = useWindowDimensions()
 		const { top } = useSafeAreaInsets()
 		const backGroundHeight = height * 0.5
+		// const opacity = scrollY.interpolate({
+		// 	inputRange: [-350, 0, 350 / 2],
+		// 	outputRange: [1, 0.9, 0.5]
+		// })
+		const scale = scrollY.interpolate({
+			inputRange: [-350, 0, 350],
+			outputRange: [2, 1.05, 1],
+			extrapolate: 'clamp'
+		})
+		const translateY = scrollY.interpolate({
+			inputRange: [-350, 0, 350],
+			outputRange: [-350 / 2, 0, 350 * 0.1]
+		})
 
 		return (
-			<View style={{ ...StyleSheet.absoluteFillObject, marginTop: -top }}>
+			<Animated.View
+				style={{
+					...StyleSheet.absoluteFillObject,
+					marginTop: -top,
+					transform: [{ scale }, { translateY }]
+					// opacity
+				}}
+			>
 				<ImageBackground
 					resizeMode={'cover'}
 					source={getMediaSource(poster)}
@@ -47,7 +68,7 @@ export const MovieBackground: React.FC<IMovieBackgroundProps> = memo(
 						end={[0, 0.8]}
 					/>
 				</ImageBackground>
-			</View>
+			</Animated.View>
 		)
 	}
 )

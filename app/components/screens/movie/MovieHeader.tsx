@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Animated, StyleSheet, Text, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import BlurButton from '@/components/ui/blur-button/BlurButton'
@@ -12,10 +12,11 @@ interface IMovieHeaderProps {
 	title: string
 	rating: number
 	_id: string
+	scrollY: Animated.Value
 }
 
 export const MovieHeader: React.FC<IMovieHeaderProps> = memo(
-	({ title, _id, rating }) => {
+	({ title, _id, rating, scrollY }) => {
 		const { goBack } = useTypedNavigation()
 		const { top } = useSafeAreaInsets()
 		return (
@@ -25,18 +26,29 @@ export const MovieHeader: React.FC<IMovieHeaderProps> = memo(
 				}
 				style={{
 					marginTop: -top,
-					paddingTop: top + 6
+					paddingTop: top + 30
 				}}
 			>
-				<View
+				<Animated.View
 					style={{
 						...StyleSheet.absoluteFillObject,
-						opacity: 0.3
+						opacity: scrollY.interpolate({
+							inputRange: [-350, 0, 350],
+							outputRange: [0, 0, 1.8]
+						})
 					}}
 					className='bg-[#0D0404]'
 				/>
 				<BlurButton icon={'chevron-left'} iconSize={23} onPress={goBack} />
-				<View className={'items-center w-2/3'}>
+				<Animated.View
+					style={{
+						opacity: scrollY.interpolate({
+							inputRange: [-350, 0, 350],
+							outputRange: [0, 0, 1.6]
+						})
+					}}
+					className={'items-center w-2/3'}
+				>
 					<Text
 						className={'text-white font-semibold text-2xl mb-0.5 px-2'}
 						numberOfLines={2}
@@ -44,7 +56,7 @@ export const MovieHeader: React.FC<IMovieHeaderProps> = memo(
 						{title}
 					</Text>
 					<Rating rating={rating} size={14} />
-				</View>
+				</Animated.View>
 				<FavoriteButton movieId={_id} />
 			</View>
 		)

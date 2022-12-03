@@ -1,6 +1,6 @@
 import { Entypo } from '@expo/vector-icons'
 import React, { memo } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { Animated, StyleSheet, Text, View } from 'react-native'
 
 import Rating from '@/components/ui/movie/movie-item/Rating'
 import { GenreList } from '@/components/ui/movie/movie-item/favorite-button/GenreList'
@@ -13,12 +13,17 @@ interface IMovieInfoProps {
 	duration: number
 	year: number
 	genres: IGenre[]
+	scrollY: Animated.Value
 }
 
 export const MovieInfo: React.FC<IMovieInfoProps> = memo(
-	({ title, rating, duration, year, genres }) => {
+	({ title, rating, duration, year, genres, scrollY }) => {
+		const opacity = scrollY.interpolate({
+			inputRange: [-350, 0, 350 / 2],
+			outputRange: [1, 1, 0]
+		})
 		return (
-			<View className={'px-6 mb-3'} style={{ opacity: 1 }}>
+			<Animated.View className={'px-6 mb-3'} style={{ opacity }}>
 				<Text className={'text-5xl font-semibold text-[#F9FCFC] mb-2 pr-2'}>
 					{title}
 				</Text>
@@ -44,7 +49,7 @@ export const MovieInfo: React.FC<IMovieInfoProps> = memo(
 					<Text style={styles.text}>{year}</Text>
 				</View>
 				<GenreList genres={genres} />
-			</View>
+			</Animated.View>
 		)
 	}
 )
