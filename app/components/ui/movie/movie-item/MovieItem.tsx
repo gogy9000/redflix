@@ -5,6 +5,7 @@ import {
 	Pressable,
 	Text,
 	View,
+	ViewStyle,
 	useWindowDimensions
 } from 'react-native'
 import Animated from 'react-native-reanimated'
@@ -25,10 +26,11 @@ interface IMoviePosterProps {
 	slug: string
 	rating: number
 	index: number
+	style?: ViewStyle
 }
 
 export const MovieItem: React.FC<IMoviePosterProps> = memo(
-	({ poster, movieId, title = '', rating, index, slug }) => {
+	({ poster, movieId, title = '', rating, index, slug, style }) => {
 		const { navigate } = useTypedNavigation()
 		const { name } = useTypedRoute()
 		const { width, height } = useWindowDimensions()
@@ -39,7 +41,7 @@ export const MovieItem: React.FC<IMoviePosterProps> = memo(
 			navigate('Movie', { slug })
 		}, [slug])
 		return (
-			<Pressable onPress={onNavigatePathMovie}>
+			<Pressable onPress={onNavigatePathMovie} style={style}>
 				<Animated.View style={animatedStyle} className={'px-2 py-2'}>
 					<ImageBackground
 						style={[
