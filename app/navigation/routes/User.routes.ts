@@ -7,6 +7,7 @@ import { Home } from '@/components/screens/home/Home'
 import { Movie } from '@/components/screens/movie/Movie'
 import { Search } from '@/components/screens/search/Search'
 import { Trending } from '@/components/screens/trending/Trending'
+import { VideoPlayer } from '@/components/screens/videoPlayer/VideoPlayer'
 
 import { IRoute } from '@/navigation/Navigation.types'
 
@@ -19,5 +20,6 @@ export const userRoutes: IRoute[] = [
 	{ name: 'Trending', component: Trending },
 	{ name: 'Movie', component: Movie },
 	{ name: 'Genre', component: Genre },
-	{ name: 'Actor', component: Actor }
+	{ name: 'Actor', component: Actor },
+	{ name: 'VideoPlayer', component: VideoPlayer }
 ]

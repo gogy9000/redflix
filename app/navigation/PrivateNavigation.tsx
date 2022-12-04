@@ -17,6 +17,7 @@ export const PrivateNavigation: React.FC = memo(() => {
 		<Stack.Navigator
 			initialRouteName={'Home'}
 			screenOptions={{
+				// orientation: 'portrait',
 				headerShown: false,
 				contentStyle: {
 					backgroundColor: '#090909'
@@ -25,9 +26,25 @@ export const PrivateNavigation: React.FC = memo(() => {
 		>
 			{user ? (
 				user.isAdmin ? (
-					routes.map(route => <Stack.Screen key={route.name} {...route} />)
+					routes.map(route => (
+						<Stack.Screen
+							options={{
+								orientation: route.name === 'VideoPlayer' ? 'all' : 'portrait'
+							}}
+							key={route.name}
+							{...route}
+						/>
+					))
 				) : (
-					userRoutes.map(route => <Stack.Screen key={route.name} {...route} />)
+					userRoutes.map(route => (
+						<Stack.Screen
+							options={{
+								orientation: route.name === 'VideoPlayer' ? 'all' : 'portrait'
+							}}
+							key={route.name}
+							{...route}
+						/>
+					))
 				)
 			) : (
 				<Stack.Screen name='Auth' component={Auth} />

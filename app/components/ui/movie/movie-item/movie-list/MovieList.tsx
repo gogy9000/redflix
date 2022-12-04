@@ -24,7 +24,7 @@ export const MovieList: React.FC<IMovieListProps> = memo(
 		return (
 			<>
 				<View className='flex-row items-center justify-between'>
-					{!!title ? <Header title={title} className={'mb-3'} /> : null}
+					<Header title={title} className={'mb-3'} />
 					{isBackButton && (
 						<Pressable className={'mr-3 '} onPress={goBack}>
 							<Ionicons

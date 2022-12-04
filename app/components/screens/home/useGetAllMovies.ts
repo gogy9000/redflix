@@ -5,7 +5,7 @@ import { movieService } from '@/services/movie.service'
 export const useGetAllMovies = () => {
 	const { isLoading, data: movies } = useQuery(
 		['movies'],
-		() => movieService.getAll({}),
+		() => movieService.getAll(),
 		{
 			select: data => data.slice(0, 10)
 		}

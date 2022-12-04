@@ -21,10 +21,12 @@ export const Layout: React.FC<PropsWithChildren<ILayout>> = memo(
 					className={cn('flex-1', className, {
 						'px-6': isHasPadding
 					})}
-					style={{
-						paddingTop: Platform.OS === 'ios' ? top / 6 : top * 0.3,
-						...style
-					}}
+					style={[
+						{
+							paddingTop: Platform.OS === 'ios' ? top / 6 : top * 0.3
+						},
+						style
+					]}
 				>
 					{isLoading ? <Loader /> : children}
 				</View>

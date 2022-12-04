@@ -7,6 +7,8 @@ import { RelatedMovies } from '@/components/screens/movie/movie-content/RelatedM
 import { ActorsCarousel } from '@/components/screens/movie/movie-content/actors-carousel/ActorsCarousel'
 import { Button } from '@/components/ui/button/Button'
 
+import { useTypedNavigation } from '@/hooks/useTypedNavigation'
+
 import { IMovie } from '@/shared/types/movies.interface'
 
 interface IMovieContentProps {
@@ -19,6 +21,8 @@ export const MovieContent: React.FC<IMovieContentProps> = memo(
 		const { height } = useWindowDimensions()
 		const ref = useRef<ScrollView>(null)
 		useScrollToTop(ref)
+		const { navigate } = useTypedNavigation()
+
 		return (
 			<Animated.ScrollView
 				contentContainerStyle={{
@@ -46,7 +50,16 @@ export const MovieContent: React.FC<IMovieContentProps> = memo(
 					duration={movie.parameters.duration}
 				/>
 				<View className='bg-[#090909] px-6 pt-3 pb-24'>
-					<Button icon={'play'} className={'mb-6'}>
+					<Button
+						onPress={() => {
+							navigate('VideoPlayer', {
+								videoUrl: movie.videoUrl,
+								title: movie.title
+							})
+						}}
+						icon={'play'}
+						className={'mb-6'}
+					>
 						Watch movie
 					</Button>
 					<ActorsCarousel actors={movie.actors} />
