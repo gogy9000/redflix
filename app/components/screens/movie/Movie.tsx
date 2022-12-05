@@ -1,4 +1,4 @@
-import React, { memo, useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { Animated } from 'react-native'
 
 import { MovieBackground } from '@/components/screens/movie/MovieBackground'
@@ -7,9 +7,14 @@ import { MovieContent } from '@/components/screens/movie/movie-content/MovieCont
 import { useMovie } from '@/components/screens/movie/useMovie'
 import { Layout } from '@/components/ui/layout/Layout'
 
-export const Movie: React.FC = memo(() => {
+const value = new Animated.Value(0)
+export const Movie: React.FC = () => {
 	const { movie, isLoading } = useMovie()
-	const scrollY = useRef(new Animated.Value(0)).current
+
+	const scrollY = useRef(value).current
+	useEffect(() => () => {
+		value.setValue(0)
+	})
 
 	return (
 		<Layout style={{ paddingTop: 0 }} isLoading={isLoading}>
@@ -27,4 +32,4 @@ export const Movie: React.FC = memo(() => {
 			) : null}
 		</Layout>
 	)
-})
+}

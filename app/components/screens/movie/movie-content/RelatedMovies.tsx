@@ -1,5 +1,11 @@
 import React, { memo } from 'react'
-import { FlatList, ListRenderItem, Text, View } from 'react-native'
+import {
+	FlatList,
+	ListRenderItem,
+	Text,
+	View,
+	useWindowDimensions
+} from 'react-native'
 
 import { useRelatedMovies } from '@/components/screens/movie/movie-content/useRelatedMovies'
 import Loader from '@/components/ui/Loader'
@@ -16,7 +22,7 @@ interface IRelatedMoviesProps {
 export const RelatedMovies: React.FC<IRelatedMoviesProps> = memo(
 	({ currentMovieId, genreIds }) => {
 		const { movies, isLoading } = useRelatedMovies(genreIds, currentMovieId)
-
+		const { width } = useWindowDimensions()
 		const renderItem: ListRenderItem<IMovie> = ({ item, index }) => (
 			<MovieItem
 				poster={item.poster}
@@ -38,6 +44,8 @@ export const RelatedMovies: React.FC<IRelatedMoviesProps> = memo(
 
 				<FlatList
 					showsHorizontalScrollIndicator={false}
+					snapToAlignment={'center'}
+					snapToInterval={width * 0.48}
 					horizontal
 					data={movies}
 					keyExtractor={data => data._id}

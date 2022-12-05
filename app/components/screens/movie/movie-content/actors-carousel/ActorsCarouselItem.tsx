@@ -17,7 +17,7 @@ export const ActorsCarouselItem: React.FC<IActorsCarouselItemProps> = memo(
 			<Pressable
 				onPress={() =>
 					navigate('Actor', {
-						slug: actor.slug
+						actor: actor
 					})
 				}
 				className='flex-row items-center rounded-xl overflow-hidden w-48 mr-4'

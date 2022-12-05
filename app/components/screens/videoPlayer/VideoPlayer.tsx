@@ -32,7 +32,12 @@ export const VideoPlayer: React.FC = memo(() => {
 
 	useEffect(() => {
 		const onStart = async () => {
-			await videoRef.current?.playAsync()
+			try {
+				await videoRef.current?.presentFullscreenPlayer()
+				await videoRef.current?.playAsync()
+			} catch (e) {
+				console.log(e)
+			}
 		}
 		const ignore = onStart()
 	}, [])
