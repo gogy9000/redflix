@@ -23,6 +23,7 @@ export const MovieHeader: React.FC<IMovieHeaderProps> = ({
 }) => {
 	const { goBack } = useTypedNavigation()
 	const { top } = useSafeAreaInsets()
+
 	return (
 		<View
 			className={
