@@ -12,7 +12,7 @@ export const Movie: React.FC = () => {
 	const { movie, isLoading } = useMovie()
 
 	const scrollY = useRef(value).current
-	useEffect(() => () => {
+	useEffect(() => {
 		value.setValue(0)
 	})
 

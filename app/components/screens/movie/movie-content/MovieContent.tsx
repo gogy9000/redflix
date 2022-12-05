@@ -24,19 +24,9 @@ export const MovieContent: React.FC<IMovieContentProps> = ({
 
 	const { navigate } = useTypedNavigation()
 
-	const scrollTop = () => {
-		if (ref.current) {
-			ref.current.scrollTo({ y: 0, animated: true })
-		}
-	}
 	useEffect(() => {
-		scrollTop()
+		ref.current?.scrollTo({ y: 0, animated: true })
 	})
-	// useScrollToTop(
-	// 	React.useRef({
-	// 		scrollToTop: scrollTop
-	// 	})
-	// )
 
 	return (
 		<Animated.ScrollView
