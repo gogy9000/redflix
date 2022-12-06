@@ -33,6 +33,15 @@ export const movieService = {
 			method: 'post',
 			data: { genreIds }
 		}),
+	async updateCountOpened(slug: string) {
+		return request<string>({
+			url: getMoviesUrl('/update-count-opened'),
+			method: 'PUT',
+			data: {
+				slug
+			}
+		})
+	},
 	async getById(_id: string) {
 		return request<IMovieEditInput>({
 			url: getMoviesUrl(`/${_id}`),

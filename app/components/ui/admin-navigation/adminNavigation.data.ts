@@ -1,6 +1,6 @@
 import { IAdminNavigationItem } from '@/components/ui/admin-navigation/adminNavigation.interface'
 
-export const navItems: IAdminNavigationItem[] = [
+export const adminNavItemsData: IAdminNavigationItem[] = [
 	{
 		icon: 'insert-chart-outlined',
 		title: 'Statistics',
@@ -9,21 +9,21 @@ export const navItems: IAdminNavigationItem[] = [
 	{
 		icon: 'group',
 		title: 'Users',
-		routeName: 'UserList'
+		routeName: 'Users'
 	},
 	{
 		icon: 'movie-filter',
 		title: 'Movies',
-		routeName: 'MovieList'
+		routeName: 'MoviesList'
 	},
 	{
 		icon: 'recent-actors',
 		title: 'Actors',
-		routeName: 'ActorList'
+		routeName: 'ActorsList'
 	},
 	{
 		icon: 'category',
 		title: 'Genres',
-		routeName: 'GenreList'
+		routeName: 'GenresList'
 	}
 ]

@@ -22,7 +22,7 @@ export const adminRoutes: IRoute[] = [
 		isAdmin: true
 	},
 	{
-		name: 'ActorList',
+		name: 'ActorsList',
 		component: ActorList,
 		isAdmin: true
 	},
@@ -32,7 +32,7 @@ export const adminRoutes: IRoute[] = [
 		isAdmin: true
 	},
 	{
-		name: 'GenreList',
+		name: 'GenresList',
 		component: GenreList,
 		isAdmin: true
 	},
@@ -42,7 +42,7 @@ export const adminRoutes: IRoute[] = [
 		isAdmin: true
 	},
 	{
-		name: 'MovieList',
+		name: 'MoviesList',
 		component: MovieList,
 		isAdmin: true
 	},
@@ -52,7 +52,7 @@ export const adminRoutes: IRoute[] = [
 		isAdmin: true
 	},
 	{
-		name: 'UserList',
+		name: 'Users',
 		component: UserList,
 		isAdmin: true
 	}

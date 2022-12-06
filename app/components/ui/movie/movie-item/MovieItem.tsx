@@ -27,10 +27,20 @@ interface IMoviePosterProps {
 	rating: number
 	index: number
 	style?: ViewStyle
+	widthKef?: number
 }
 
 export const MovieItem: React.FC<IMoviePosterProps> = memo(
-	({ poster, movieId, title = '', rating, index, slug, style }) => {
+	({
+		poster,
+		movieId,
+		title = '',
+		rating,
+		index,
+		slug,
+		style,
+		widthKef = 0.45
+	}) => {
 		const { navigate } = useTypedNavigation()
 		const { name } = useTypedRoute()
 		const { width, height } = useWindowDimensions()
@@ -47,7 +57,7 @@ export const MovieItem: React.FC<IMoviePosterProps> = memo(
 						style={[
 							{
 								height: height / 3,
-								width: width * 0.45
+								width: width * widthKef
 							}
 						]}
 						resizeMode={'cover'}
