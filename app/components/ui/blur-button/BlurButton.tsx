@@ -13,13 +13,15 @@ const BlurButton: FC<PropsWithChildren<IBlurButton>> = ({
 	style,
 	isSmall = false,
 	icon,
+	tint = 'light',
+	intensity = 22,
 	...rest
 }) => {
 	return (
 		<Pressable {...rest}>
 			<BlurView
-				intensity={22}
-				tint='light'
+				intensity={intensity}
+				tint={tint}
 				className={cn(
 					'items-center justify-center overflow-hidden',
 					isSmall ? 'w-8 h-8 rounded-lg' : 'w-12 h-12 rounded-2xl'

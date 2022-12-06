@@ -20,10 +20,16 @@ export const userService = {
 		})
 	},
 	async getFavoritesMovies() {
-		return request<IMovie[]>({
+		const res = await request<IMovie[]>({
 			url: getUsersUrl('/profile/favorites'),
 			method: 'get'
 		})
+		//бекенд еб...ный
+		// @ts-ignore
+		if (res === '') {
+			return []
+		}
+		return res
 	},
 	async putFavoriteMovie(movieId: string) {
 		return request<{}>({

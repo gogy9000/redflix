@@ -19,7 +19,6 @@ interface IButtonProps extends PressableProps {
 	className?: string
 	textClassName?: string
 	icon?: TypeFeatherIconNames
-	// onPress?: (e: GestureResponderEvent) => void
 }
 
 export const Button: React.FC<PropsWithChildren<IButtonProps>> = memo(

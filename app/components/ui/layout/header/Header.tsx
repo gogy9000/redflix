@@ -11,13 +11,14 @@ interface IHeaderProps {
 	style?: TextStyle
 	isAbsolute?: boolean
 	isBackButton?: boolean
+	iconSize?: number
 }
 
 export const Header: React.FC<IHeaderProps> = memo(
-	({ className, title, style, isAbsolute, isBackButton }) => {
+	({ className, title, style, isAbsolute, isBackButton, iconSize = 32 }) => {
 		const { goBack } = useTypedNavigation()
 		return (
-			<View className='flex-row items-center justify-between'>
+			<View className='flex-row flex-1  items-center justify-between'>
 				<Text
 					className={cn(
 						'ml-3 text-white text-opacity-80 font-semibold text-3xl',
@@ -31,12 +32,12 @@ export const Header: React.FC<IHeaderProps> = memo(
 				</Text>
 				{isBackButton && (
 					<Pressable
-						className={'mr-3 absolute top-3 z-1 right-1'}
+						className={cn('mr-3  right-1', isAbsolute && 'absolute top-3 z-1')}
 						onPress={goBack}
 					>
 						<Ionicons
 							name='arrow-back-circle-outline'
-							size={32}
+							size={iconSize}
 							color='white'
 						/>
 					</Pressable>

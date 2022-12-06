@@ -4,6 +4,7 @@ import { Platform, View, ViewStyle } from 'react-native'
 import { SafeAreaView, useSafeAreaInsets } from 'react-native-safe-area-context'
 
 import Loader from '@/components/ui/Loader'
+import { AdminButton } from '@/components/ui/layout/AdminButton'
 
 interface ILayout {
 	className?: string
@@ -29,6 +30,7 @@ export const Layout: React.FC<PropsWithChildren<ILayout>> = memo(
 					]}
 				>
 					{isLoading ? <Loader /> : children}
+					<AdminButton />
 				</View>
 			</SafeAreaView>
 		)
