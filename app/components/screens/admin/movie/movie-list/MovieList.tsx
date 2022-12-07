@@ -1,12 +1,16 @@
 import React, { memo } from 'react'
-import { Text, View } from 'react-native'
+import { Text } from 'react-native'
+
+import { AdminNavigation } from '@/components/ui/admin-navigation/AdminNavigation'
+import { Layout } from '@/components/ui/layout/Layout'
 
 interface IMovieListProps {}
 
 export const MovieList: React.FC<IMovieListProps> = memo(({}) => {
 	return (
-		<View>
+		<Layout>
+			<AdminNavigation title={'Movies'} />
 			<Text>MovieList</Text>
-		</View>
+		</Layout>
 	)
 })

@@ -13,10 +13,9 @@ export const Statistics: React.FC<IStatisticsProps> = memo(({}) => {
 	const mappedMovieItems = useMemo(
 		() =>
 			movies?.map((movie, index) => (
-				<View className={'mb-3'}>
+				<View key={movie._id} className={'mb-3'}>
 					<MovieItem
 						widthKef={0.35}
-						key={movie._id}
 						rating={movie.rating}
 						slug={movie.slug}
 						title={movie.title}
