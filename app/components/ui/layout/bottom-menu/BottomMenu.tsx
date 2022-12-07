@@ -1,3 +1,4 @@
+import cn from 'clsx'
 import React, { memo } from 'react'
 import { View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -16,7 +17,10 @@ export const BottomMenu: React.FC<IBottomMenuProps> = memo(
 		const { bottom } = useSafeAreaInsets()
 		return (
 			<View
-				className='pt-5 px-2 flex-row justify-between items-center w-full  bg-[#090909]'
+				className={cn(
+					'pt-5 px-2 flex-row justify-between items-center w-full  bg-[#090909]',
+					currentRoute === 'VideoPlayer' && 'bg-black'
+				)}
 				style={{ paddingBottom: bottom + 5 }}
 			>
 				{menuItems.map(item => (

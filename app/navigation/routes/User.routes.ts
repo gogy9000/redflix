@@ -1,11 +1,13 @@
 import { Favorites } from '@/components/screens/Favorites'
 import { Profile } from '@/components/screens/Profile/Profile'
-import { Search } from '@/components/screens/Search'
 import { Test } from '@/components/screens/Test'
-import { Trending } from '@/components/screens/Trending'
+import { Actor } from '@/components/screens/actor/Actor'
 import { Genre } from '@/components/screens/genre/Genre'
 import { Home } from '@/components/screens/home/Home'
 import { Movie } from '@/components/screens/movie/Movie'
+import { Search } from '@/components/screens/search/Search'
+import { Trending } from '@/components/screens/trending/Trending'
+import { VideoPlayer } from '@/components/screens/videoPlayer/VideoPlayer'
 
 import { IRoute } from '@/navigation/Navigation.types'
 
@@ -17,5 +19,7 @@ export const userRoutes: IRoute[] = [
 	{ name: 'Search', component: Search },
 	{ name: 'Trending', component: Trending },
 	{ name: 'Movie', component: Movie },
-	{ name: 'Genre', component: Genre }
+	{ name: 'Genre', component: Genre },
+	{ name: 'Actor', component: Actor },
+	{ name: 'VideoPlayer', component: VideoPlayer }
 ]

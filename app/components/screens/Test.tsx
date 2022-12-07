@@ -1,41 +1,98 @@
-import React, { memo, useEffect } from 'react'
-import Animated, {
-	useAnimatedProps,
-	useSharedValue,
-	withSpring
-} from 'react-native-reanimated'
-import Svg, { Path } from 'react-native-svg'
+import { LinearGradient } from 'expo-linear-gradient'
+import React, { memo } from 'react'
+import { StyleSheet, Text, View } from 'react-native'
 
 import { Layout } from '@/components/ui/layout/Layout'
+import { Header } from '@/components/ui/layout/header/Header'
 
-const AnimatedPath = Animated.createAnimatedComponent(Path)
+interface ITestProps {}
 
-export const Test: React.FC = memo(() => {
-	const radius = useSharedValue(25)
-
-	const animatedProps = useAnimatedProps(() => {
-		// draw a circle
-		const path = `
-    M 100, 100
-    m -${radius.value}, 0
-    a ${radius.value},${radius.value} 0 1,0 ${radius.value * 2},0
-    a ${radius.value},${radius.value} 0 1,0 ${-radius.value * 2},0
-    `
-		return {
-			d: path
-		}
-	})
-	useEffect(() => {
-		radius.value = withSpring(50)
-	}, [])
+export const Test: React.FC<ITestProps> = memo(({}) => {
 	return (
 		<Layout>
-			<Svg>
-				<AnimatedPath animatedProps={animatedProps} fill='white' />
-			</Svg>
+			<Header title={'Test'} />
+			<View style={styles.container}>
+				<LinearGradient
+					// Background Linear Gradient
+					colors={['transparent', 'rgba(0,0,0,0.8)']}
+					style={styles.background}
+				/>
+				<LinearGradient
+					// Button Linear Gradient
+					colors={['#4c669f', '#3b5998', '#192f6a']}
+					style={styles.button}
+				>
+					<Text style={styles.text}>Sign in with Facebook</Text>
+				</LinearGradient>
+			</View>
 		</Layout>
 	)
 })
+const styles = StyleSheet.create({
+	container: {
+		flex: 1,
+		alignItems: 'center',
+		justifyContent: 'center',
+		backgroundColor: 'orange'
+	},
+	background: {
+		position: 'absolute',
+		left: 0,
+		right: 0,
+		top: 535,
+		height: 200
+	},
+	button: {
+		padding: 15,
+		alignItems: 'center',
+		borderRadius: 5
+	},
+	text: {
+		backgroundColor: 'transparent',
+		fontSize: 15,
+		color: '#fff'
+	}
+})
+
+// import React, { memo, useEffect } from 'react'
+// import Animated, {
+// 	useAnimatedProps,
+// 	useSharedValue,
+// 	withSpring
+// } from 'react-native-reanimated'
+// import Svg, { Path } from 'react-native-svg'
+//
+// import { Layout } from '@/components/ui/layout/Layout'
+//
+// const AnimatedPath = Animated.createAnimatedComponent(Path)
+//
+// export const Test: React.FC = memo(() => {
+// 	const radius = useSharedValue(25)
+//
+// 	const animatedProps = useAnimatedProps(() => {
+// 		// draw a circle
+// 		const path = `
+//     M 100, 100
+//     m -${radius.value}, 0
+//     a ${radius.value},${radius.value} 0 1,0 ${radius.value * 2},0
+//     a ${radius.value},${radius.value} 0 1,0 ${-radius.value * 2},0
+//     `
+// 		return {
+// 			d: path
+// 		}
+// 	})
+// 	useEffect(() => {
+// 		radius.value = withSpring(50)
+// 	}, [])
+// 	return (
+// 		<Layout>
+// 			<Svg>
+// 				<AnimatedPath animatedProps={animatedProps} fill='white' />
+// 			</Svg>
+// 		</Layout>
+// 	)
+// })
+
 // import React, { memo } from 'react'
 // import {
 // 	GestureEvent,

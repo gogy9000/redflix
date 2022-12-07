@@ -1,12 +1,14 @@
 import React, { memo } from 'react'
-import { Text, View } from 'react-native'
 
-interface IAdminProps {}
+import { Statistics } from '@/components/screens/admin/Statistics'
+import { AdminNavigation } from '@/components/ui/admin-navigation/AdminNavigation'
+import { Layout } from '@/components/ui/layout/Layout'
 
-export const Admin: React.FC<IAdminProps> = memo(({}) => {
+export const Admin: React.FC = memo(() => {
 	return (
-		<View>
-			<Text>Admin</Text>
-		</View>
+		<Layout isHasPadding>
+			<AdminNavigation title={'Statistics'} />
+			<Statistics />
+		</Layout>
 	)
 })

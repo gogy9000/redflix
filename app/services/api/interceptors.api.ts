@@ -6,19 +6,25 @@ import {
 	getAccessToken
 } from '@/services/auth/auth.helpers'
 
-instance.interceptors.request.use(async config => {
-	const accessToken = await getAccessToken()
-	if (config.headers && accessToken)
-		config.headers.Authorization = `Bearer ${accessToken}`
-	return config
-})
+instance.interceptors.request.use(
+	async config => {
+		const accessToken = await getAccessToken()
+
+		if (config.headers && accessToken)
+			config.headers.Authorization = `Bearer ${accessToken}`
+		return config
+	},
+	error => {
+		throw error
+	}
+)
 
 instance.interceptors.response.use(
 	config => config,
 	async error => {
 		const originalRequest = error.config
 		if (
-			error.response.status === 401 ||
+			(!error.config._isRetry && error?.response?.status === 401) ||
 			errorCatch(error) === 'jwt expired' ||
 			(errorCatch(error) === 'jwt must be provided' &&
 				error.config &&
@@ -26,16 +32,17 @@ instance.interceptors.response.use(
 		) {
 			originalRequest._isRetry = true
 			try {
+				console.log('try')
 				await getNewTokens()
 				return instance.request(originalRequest)
 			} catch (e) {
 				if (errorCatch(e) === 'jwt expired') {
 					await deleteTokensStorage()
 				}
-				throw e
 			}
+		} else {
+			throw error
 		}
-		throw error
 	}
 )
 export default instance

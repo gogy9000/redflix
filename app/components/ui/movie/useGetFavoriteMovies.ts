@@ -13,5 +13,6 @@ export const useGetFavoriteMovies = () => {
 	} = useQuery(['get favorite movie'], () => userService.getFavoritesMovies(), {
 		enabled: !!user
 	})
+
 	return { favoriteMovies, isLoading, status }
 }
