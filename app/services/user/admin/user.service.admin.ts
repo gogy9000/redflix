@@ -14,5 +14,10 @@ export const UserServiceAdmin = {
 		request({
 			url: getUsersUrl('/count'),
 			method: 'get'
+		}),
+	deleteUser: (userId: string) =>
+		request({
+			method: 'delete',
+			url: getUsersUrl(`/${userId}`)
 		})
 }
