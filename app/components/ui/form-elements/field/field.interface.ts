@@ -1,3 +1,4 @@
+import { ClassValue } from 'clsx'
 import {
 	Control,
 	FieldPath,
@@ -14,4 +15,5 @@ export interface IFieldProps<T extends FieldValues>
 		RegisterOptions<T, FieldPath<T>>,
 		'valueAsNumber' | 'valueAsDate' | 'disabled'
 	>
+	viewClassName?: ClassValue
 }

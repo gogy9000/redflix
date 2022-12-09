@@ -13,7 +13,9 @@ export const MovieList: React.FC = memo(() => {
 	return (
 		<Layout isHasPadding>
 			<AdminNavigation title={'Movies'} />
+
 			<MovieSearch control={control} />
+
 			<Table
 				classNameHeadCell={className}
 				classNameBodyCell={className}

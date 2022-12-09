@@ -1,35 +1,35 @@
 import { Feather } from '@expo/vector-icons'
 import cn from 'clsx'
 import React, { PropsWithChildren, memo } from 'react'
+import { GestureResponderEvent, PressableProps, Text } from 'react-native'
 import {
-	GestureResponderEvent,
-	Pressable,
-	PressableProps,
-	Text
-} from 'react-native'
-import Animated, {
 	useAnimatedStyle,
 	useSharedValue,
 	withTiming
 } from 'react-native-reanimated'
 
+import { ReanimatedPressable } from '@/components/ui/ReanimatedPressable'
+
 import { TypeFeatherIconNames } from '@/shared/types/icon.types'
 
 interface IButtonProps extends PressableProps {
-	className?: string
+	ViewClassName?: string
 	textClassName?: string
 	icon?: TypeFeatherIconNames
+	size?: number
 }
 
 export const Button: React.FC<PropsWithChildren<IButtonProps>> = memo(
 	({
 		children,
-		className,
+		ViewClassName,
 		icon,
+		size = 18,
 		textClassName,
 		onPressIn,
 		onPressOut,
 		onPress,
+
 		...rest
 	}) => {
 		const scale = useSharedValue(1)
@@ -51,21 +51,19 @@ export const Button: React.FC<PropsWithChildren<IButtonProps>> = memo(
 			scale.value = 1
 		}
 		return (
-			<Pressable
+			<ReanimatedPressable
 				onPressIn={pressIn}
 				onPressOut={pressOut}
 				onPress={pressHandler}
+				style={[uas]}
+				className={cn(
+					'items-center bg-primary  justify-center flex-row  rounded-lg   py-1 px-3',
+					ViewClassName
+				)}
 				{...rest}
 			>
-				<Animated.View
-					style={[uas]}
-					className={cn(
-						'items-center bg-primary  justify-center flex-row  rounded-lg w-full  py-1 px-3',
-
-						className
-					)}
-				>
-					{icon && <Feather name={icon} size={18} color='white' />}
+				{icon && <Feather name={icon} size={size} color='white' />}
+				{typeof children === 'string' ? (
 					<Text
 						className={cn(' text-white text-lg', textClassName, {
 							'ml-2': !!icon
@@ -73,8 +71,10 @@ export const Button: React.FC<PropsWithChildren<IButtonProps>> = memo(
 					>
 						{children}
 					</Text>
-				</Animated.View>
-			</Pressable>
+				) : (
+					<>{children}</>
+				)}
+			</ReanimatedPressable>
 		)
 	}
 )

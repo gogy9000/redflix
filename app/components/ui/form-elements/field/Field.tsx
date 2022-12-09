@@ -9,6 +9,7 @@ export const Field = <T extends Record<string, any>>({
 	control,
 	rules,
 	name,
+	viewClassName,
 	...rest
 }: IFieldProps<T>): JSX.Element => {
 	return (
@@ -23,7 +24,8 @@ export const Field = <T extends Record<string, any>>({
 				<>
 					<View
 						className={cn(
-							'bg-[#232323] w-full border rounded-lg pb-4 pt-2.5 px-4 my-1.5',
+							'bg-[#232323]  flex-1 border rounded-lg pb-4 pt-2.5 px-4 my-1.5',
+							viewClassName,
 							error ? 'border-red' : 'border-transparent'
 						)}
 					>

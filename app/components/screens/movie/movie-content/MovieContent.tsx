@@ -58,7 +58,7 @@ export const MovieContent: React.FC<IMovieContentProps> = memo(
 					duration={movie.parameters.duration}
 				/>
 				<View className='bg-[#090909] px-6 pt-3 pb-16'>
-					<Button onPress={onPress} icon={'play'} className={'mb-6'}>
+					<Button onPress={onPress} icon={'play'} ViewClassName={'mb-6'}>
 						Watch movie
 					</Button>
 					<ActorsCarousel actors={movie.actors} />

@@ -46,7 +46,7 @@ export const Profile: React.FC = memo(() => {
 						<AuthFields control={control} />
 						<Button
 							onPress={handleSubmit(onSubmit)}
-							className={'mt-2 w-1/2 self-center'}
+							ViewClassName={'mt-2 w-1/2 self-center'}
 							icon={'edit'}
 						>
 							Update profile
