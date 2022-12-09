@@ -36,8 +36,10 @@ export const useMovieList = () => {
 			select: (data): BodyType => {
 				return data.map(movieItem => [
 					movieItem.title,
-					movieItem.genres[0]?.name,
-					movieItem.rating.toString(),
+					`${movieItem.genres ? movieItem.genres[0].name : ''} ${
+						movieItem?.genres?.length > 1 ? '...' : ''
+					}`,
+					movieItem.rating?.toString(),
 					<MovieActions
 						movieId={movieItem._id}
 						navigate={navigate}

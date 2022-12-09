@@ -1,6 +1,5 @@
 import React, { memo } from 'react'
 import { Control } from 'react-hook-form'
-import { View } from 'react-native'
 
 import { Field } from '@/components/ui/form-elements/field/Field'
 
@@ -12,13 +11,11 @@ interface ISearchUserProps {
 
 export const UserSearch: React.FC<ISearchUserProps> = memo(({ control }) => {
 	return (
-		<View>
-			<Field<ISearchFormData>
-				keyboardType={'web-search'}
-				placeholder='Type something...'
-				control={control}
-				name={'searchTerm'}
-			/>
-		</View>
+		<Field<ISearchFormData>
+			keyboardType={'web-search'}
+			placeholder='Type something...'
+			control={control}
+			name={'searchTerm'}
+		/>
 	)
 })

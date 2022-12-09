@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { Text } from 'react-native'
 
-import { UserSearch } from '@/components/screens/admin/users/user-list/UserSearch'
+import { AdminSearch } from '@/components/screens/admin/movie/movie-list/AdminSearch'
 import { useUsers } from '@/components/screens/admin/users/user-list/useUsers'
 import { AdminNavigation } from '@/components/ui/admin-navigation/AdminNavigation'
 import { Layout } from '@/components/ui/layout/Layout'
@@ -19,7 +19,7 @@ export const UserList: React.FC = memo(() => {
 	return (
 		<Layout isHasPadding>
 			<AdminNavigation title={'Users'} />
-			<UserSearch control={control} />
+			<AdminSearch control={control} />
 			<Table
 				classNameHeadRow={'bg-primary'}
 				classNameBodyCell={className}
