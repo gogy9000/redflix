@@ -28,7 +28,7 @@ export const TableCell: React.FC<ITableCellProps> = memo(
 			} else {
 				return cellData
 			}
-		}, [cellData, classNameCellText])
+		}, [cellData, classNameCellText, classNameCell])
 
 		return (
 			<View

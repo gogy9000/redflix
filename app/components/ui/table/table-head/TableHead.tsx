@@ -1,5 +1,5 @@
-import { ClassValue } from 'clsx'
-import React, { memo } from 'react'
+import cn, { ClassValue } from 'clsx'
+import React, { memo, useMemo } from 'react'
 import { View } from 'react-native'
 
 import { TableRow } from '@/components/ui/table/table-row/TableRow'
@@ -19,13 +19,17 @@ export const TableHead: React.FC<ITableHeadProps> = memo(
 		ClassNameTableHeadCell,
 		ClassNameTableHeadRow
 	}) => {
+		const classNameRow = useMemo(
+			() => cn('bg-primary', ClassNameTableHeadRow),
+			[ClassNameTableHeadRow]
+		)
 		return (
 			<View className={'py-3.5'}>
 				<TableRow
 					tableRowData={tableHeadData}
 					classNameCellText={classNameHeadCellText}
 					classNameCell={ClassNameTableHeadCell}
-					classNameRow={ClassNameTableHeadRow}
+					classNameRow={classNameRow}
 				/>
 			</View>
 		)

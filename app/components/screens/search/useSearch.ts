@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query'
 
 import { useSearchForm } from '@/hooks/useSearchForm'
 
-import { movieService } from '@/services/movie.service'
+import { movieService } from '@/services/movie-services/movie.service'
 
 export const useSearch = () => {
 	const { searchTerm, debouncedSearch, control } = useSearchForm()

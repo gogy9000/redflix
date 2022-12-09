@@ -32,7 +32,13 @@ export const TableRow: React.FC<ITableHeadProps> = memo(
 						cellData={cellData}
 					/>
 				)),
-			[tableRowData, classNameCellText, classNameCell]
+			[
+				tableRowData,
+				classNameRow,
+				classNameCell,
+				classNameCellText,
+				animatedStyle
+			]
 		)
 
 		return (
