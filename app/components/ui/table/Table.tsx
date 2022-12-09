@@ -18,7 +18,7 @@ interface ITableProps {
 	classNameBodyCellText?: ClassValue
 	isLoading?: boolean
 }
-const defaultCell: CellType = 'Some ddata'
+const defaultCell: CellType = ''
 const defaultRow: RowType = [defaultCell, defaultCell, defaultCell]
 const defaultBody: BodyType = [defaultRow, defaultRow, defaultRow]
 

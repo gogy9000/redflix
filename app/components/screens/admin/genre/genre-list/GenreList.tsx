@@ -15,6 +15,7 @@ export const GenreList: React.FC = memo(() => {
 			<AdminNavigation title={'Genres'} />
 			<AdminSearch onPress={onCreateGenre} control={control} />
 			<Table
+				isLoading={queryData.isLoading}
 				classNameHeadCell={className}
 				classNameBodyCell={className}
 				headData={GenreListHeadData}

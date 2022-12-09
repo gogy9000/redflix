@@ -15,6 +15,7 @@ export const MovieList: React.FC = memo(() => {
 			<AdminNavigation title={'Movies'} />
 			<AdminSearch onPress={onCreateMovie} control={control} />
 			<Table
+				isLoading={queryData.isLoading}
 				classNameHeadCell={className}
 				classNameBodyCell={className}
 				headData={MovieListHeadData}

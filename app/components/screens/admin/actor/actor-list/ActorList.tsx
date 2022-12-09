@@ -15,6 +15,7 @@ export const ActorList: React.FC = memo(() => {
 			<AdminNavigation title={'Actors'} />
 			<AdminSearch onPress={onCreateActor} control={control} />
 			<Table
+				isLoading={queryData.isLoading}
 				classNameHeadCell={className}
 				classNameBodyCell={className}
 				headData={ActorsListHeadData}
