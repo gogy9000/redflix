@@ -4,24 +4,24 @@ import { TableActions } from '@/components/ui/table/table-actions/TableActions'
 
 import { TypeRootStackParamList } from '@/navigation/Navigation.types'
 
-interface IUsersActionProps {
-	userId: string
+interface IMovieActionsProps {
+	movieId: string
 	navigate: (
 		name: keyof TypeRootStackParamList,
-		params: TypeRootStackParamList['UserEdit']
+		params: TypeRootStackParamList['MovieEdit']
 	) => void
-	onDeleteUser: (userId: string) => void
+	onDeleteMovie: (userId: string) => void
 }
 
-export const UsersAction: React.FC<IUsersActionProps> = memo(
-	({ userId, navigate, onDeleteUser }) => {
+export const MovieActions: React.FC<IMovieActionsProps> = memo(
+	({ movieId, navigate, onDeleteMovie }) => {
 		const onNavigateUserEdit = useCallback(
-			() => navigate('UserEdit', { id: userId }),
-			[userId]
+			() => navigate('MovieEdit', { id: movieId }),
+			[movieId]
 		)
 		const onDelete = useCallback(() => {
-			onDeleteUser(userId)
-		}, [userId])
+			onDeleteMovie(movieId)
+		}, [movieId])
 		return (
 			<TableActions onDelete={onDelete} onNavigateEdit={onNavigateUserEdit} />
 		)

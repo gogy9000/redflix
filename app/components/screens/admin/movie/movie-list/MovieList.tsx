@@ -9,13 +9,11 @@ import { Table } from '@/components/ui/table/Table'
 
 const className = 'w-36'
 export const MovieList: React.FC = memo(() => {
-	const { queryData, control } = useMovieList()
+	const { queryData, control, onCreateMovie } = useMovieList()
 	return (
 		<Layout isHasPadding>
 			<AdminNavigation title={'Movies'} />
-
-			<MovieSearch control={control} />
-
+			<MovieSearch onCreateMovie={onCreateMovie} control={control} />
 			<Table
 				classNameHeadCell={className}
 				classNameBodyCell={className}
