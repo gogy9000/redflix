@@ -29,7 +29,7 @@ export const useActorsList = () => {
 	)
 
 	const queryData = useQuery(
-		['search genre', debouncedSearch],
+		['search actors', debouncedSearch],
 		() => actorService.getAll(debouncedSearch),
 		{
 			select: (data): BodyType => {

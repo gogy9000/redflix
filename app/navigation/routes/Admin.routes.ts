@@ -1,5 +1,5 @@
 import { Admin } from '@/components/screens/admin/Admin'
-import { ActorEdit } from '@/components/screens/admin/actor/ActorEdit'
+import { ActorEdit } from '@/components/screens/admin/actor/actor-edit/ActorEdit'
 import { ActorList } from '@/components/screens/admin/actor/actor-list/ActorList'
 import { GenreEdit } from '@/components/screens/admin/genre/genre-edit/genreEdit'
 import { GenreList } from '@/components/screens/admin/genre/genre-list/GenreList'
