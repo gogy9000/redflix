@@ -12,9 +12,7 @@ import { Layout } from '@/components/ui/layout/Layout'
 import { getColor } from '@/config/colors.config'
 import { IAuthFormData } from '@/shared/types/auth.interface'
 
-interface IUserEditProps {}
-
-export const UserEdit: React.FC<IUserEditProps> = memo(({}) => {
+export const UserEdit: React.FC = memo(() => {
 	const { control, isLoading, onSubmit } = useUserEdit()
 
 	return (
@@ -26,6 +24,7 @@ export const UserEdit: React.FC<IUserEditProps> = memo(({}) => {
 				name={'isAdmin'}
 				render={({ field: { value, onChange } }) => (
 					<Pressable
+						onPress={() => onChange(!value)}
 						className={'flex-row justify-end space-x-3 my-5 items-center'}
 					>
 						<Checkbox
