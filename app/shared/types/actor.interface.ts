@@ -5,3 +5,4 @@ export interface IActor {
 	countMovies: number
 	slug: string
 }
+export interface IActorEditInput extends Omit<IActor, '_id'> {}
