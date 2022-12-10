@@ -28,7 +28,7 @@ export const useUsers = () => {
 		}
 	)
 	const queryData = useQuery(
-		['search movie', debouncedSearch],
+		['search users', debouncedSearch],
 		() => UserServiceAdmin.getAll(debouncedSearch),
 		{
 			select: (data): BodyType => {

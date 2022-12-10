@@ -5,7 +5,7 @@ import { GenreList } from '@/components/screens/admin/genre/genre-list/GenreList
 import { GenreEdit } from '@/components/screens/admin/genre/genreEdit'
 import { MovieEdit } from '@/components/screens/admin/movie/MovieEdit'
 import { MovieList } from '@/components/screens/admin/movie/movie-list/MovieList'
-import { UserEdit } from '@/components/screens/admin/users/UserEdit'
+import { UserEdit } from '@/components/screens/admin/users/user-edit/UserEdit'
 import { UserList } from '@/components/screens/admin/users/user-list/UserList'
 
 import { IRoute } from '@/navigation/Navigation.types'
