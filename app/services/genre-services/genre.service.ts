@@ -4,7 +4,7 @@ import { getGenresUrl } from '@/config/api.config'
 import { IGenre, IGenreEditInput } from '@/shared/types/gengre.interface'
 
 export const genreService = {
-	geyAll: async (searchTerm?: string) =>
+	getAll: async (searchTerm?: string) =>
 		request<IGenre[]>({
 			url: getGenresUrl(''),
 			method: 'get',

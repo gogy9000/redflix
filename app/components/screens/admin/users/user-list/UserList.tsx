@@ -1,12 +1,33 @@
 import React, { memo } from 'react'
-import { Text, View } from 'react-native'
+import { Text } from 'react-native'
 
-interface IUserListProps {}
+import { AdminSearch } from '@/components/screens/admin/movie/movie-list/AdminSearch'
+import { useUsers } from '@/components/screens/admin/users/user-list/useUsers'
+import { AdminNavigation } from '@/components/ui/admin-navigation/AdminNavigation'
+import { Layout } from '@/components/ui/layout/Layout'
+import { Table } from '@/components/ui/table/Table'
 
-export const UserList: React.FC<IUserListProps> = memo(({}) => {
+const headData = [
+	'Email',
+	'Date register',
+	<Text className={'self-center text-white text-xl'}>Action</Text>
+]
+const className = 'w-40'
+export const UserList: React.FC = memo(() => {
+	const { queryData, control } = useUsers()
+
 	return (
-		<View>
-			<Text>UserList</Text>
-		</View>
+		<Layout isHasPadding>
+			<AdminNavigation title={'Users'} />
+			<AdminSearch control={control} />
+			<Table
+				classNameHeadRow={'bg-primary'}
+				classNameBodyCell={className}
+				classNameHeadCell={className}
+				isLoading={queryData.isLoading}
+				bodyData={queryData.data}
+				headData={headData}
+			/>
+		</Layout>
 	)
 })

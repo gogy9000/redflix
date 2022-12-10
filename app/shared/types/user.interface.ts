@@ -9,3 +9,4 @@ export interface IGetProfileResponse extends IUser {
 	updatedAt: string
 	favorites: any[]
 }
+export interface IUserEditInput extends Omit<IUser, '_id' | 'createdAt'> {}

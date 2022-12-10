@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
 
-import { movieService } from '@/services/movie.service'
+import { movieService } from '@/services/movie-services/movie.service'
 
 export const useGetAllMovies = () => {
 	const { isLoading, data: movies } = useQuery(
