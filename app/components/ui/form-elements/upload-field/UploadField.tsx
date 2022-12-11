@@ -57,7 +57,6 @@ export const UploadField: React.FC<IUploadField> = memo(
 						)}
 						{error && <Text className='text-red mt-1'>{error.message}</Text>}
 					</View>
-					-
 					{!isNoImage && (
 						<View className='w-24 h-24 rounded-2xl overflow-hidden ml-5'>
 							{isLoading ? (
