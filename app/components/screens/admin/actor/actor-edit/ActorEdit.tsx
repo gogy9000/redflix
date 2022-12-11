@@ -1,4 +1,5 @@
 import React, { memo } from 'react'
+import { Controller } from 'react-hook-form'
 import { ScrollView } from 'react-native'
 
 import { useActorEdit } from '@/components/screens/admin/actor/actor-edit/useActorEdit'
@@ -6,6 +7,7 @@ import { AdminNavigation } from '@/components/ui/admin-navigation/AdminNavigatio
 import { Button } from '@/components/ui/button/Button'
 import { Field } from '@/components/ui/form-elements/field/Field'
 import { SlugWrapper } from '@/components/ui/form-elements/field/SlugWrapper'
+import { UploadField } from '@/components/ui/form-elements/upload-field/UploadField'
 import { Layout } from '@/components/ui/layout/Layout'
 
 import { IActorEditInput } from '@/shared/types/actor.interface'
@@ -35,6 +37,23 @@ export const ActorEdit: React.FC = memo(() => {
 						rules={{ required: 'Slug is required' }}
 					/>
 				</SlugWrapper>
+				<Controller
+					control={control}
+					name='photo'
+					defaultValue=''
+					render={({ field: { value, onChange }, fieldState: { error } }) => (
+						<UploadField
+							onChange={onChange}
+							value={value}
+							error={error}
+							folder='actors'
+							placeholder='Photo'
+						/>
+					)}
+					rules={{
+						required: 'Photo is required!'
+					}}
+				/>
 				<Button onPress={onSubmit} icon='pen-tool'>
 					Update
 				</Button>
