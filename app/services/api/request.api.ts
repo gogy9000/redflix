@@ -10,6 +10,7 @@ export const request = async <T>(config: AxiosRequestConfig) => {
 	}
 
 	const onError = (error: AxiosError<T>) => {
+		console.log(error)
 		Toast.show({
 			type: 'error',
 			text1: 'Request error',

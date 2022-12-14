@@ -3,7 +3,7 @@ import { ActorEdit } from '@/components/screens/admin/actor/actor-edit/ActorEdit
 import { ActorList } from '@/components/screens/admin/actor/actor-list/ActorList'
 import { GenreEdit } from '@/components/screens/admin/genre/genre-edit/genreEdit'
 import { GenreList } from '@/components/screens/admin/genre/genre-list/GenreList'
-import { MovieEdit } from '@/components/screens/admin/movie/MovieEdit'
+import { MovieEdit } from '@/components/screens/admin/movie/movie-edit/MovieEdit'
 import { MovieList } from '@/components/screens/admin/movie/movie-list/MovieList'
 import { UserEdit } from '@/components/screens/admin/users/user-edit/UserEdit'
 import { UserList } from '@/components/screens/admin/users/user-list/UserList'
