@@ -1,7 +1,7 @@
 import { request } from '@/services/api/request.api'
 
 import { getMoviesUrl } from '@/config/api.config'
-import { IMovie, IMovieEditInput } from '@/shared/types/movies.interface'
+import { IMovie } from '@/shared/types/movies.interface'
 
 export const movieService = {
 	async getAll(searchTerm?: string) {
@@ -40,12 +40,6 @@ export const movieService = {
 			data: {
 				slug
 			}
-		})
-	},
-	async getById(_id: string) {
-		return request<IMovieEditInput>({
-			url: getMoviesUrl(`/${_id}`),
-			method: 'GET'
 		})
 	}
 }
