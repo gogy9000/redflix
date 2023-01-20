@@ -20,7 +20,7 @@ const Rating: FC<IRating> = ({ size = 20, rating }) => {
 					size === 20 ? 'text-lg' : 'text-base'
 				)}
 			>
-				{rating.toFixed(1)}
+				{rating || null}
 			</Text>
 		</View>
 	)
