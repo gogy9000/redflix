@@ -36,7 +36,6 @@ export const useAuthMutations = (reset: UseFormReset<IAuthFormData>) => {
 			}
 		}
 	)
-	console.log(isLoginLoading, isRegisterLoading)
 	return useMemo(
 		() => ({
 			loginSync,

@@ -18,10 +18,16 @@ export const VideoPlayer: React.FC = memo(() => {
 	useEffect(() => {
 		const enableAudio = async () => {
 			await Audio.setAudioModeAsync({
+				// allowsRecordingIOS: false,
+				// playsInSilentModeIOS: true,
+				// staysActiveInBackground: false,
+				// shouldDuckAndroid: false
 				allowsRecordingIOS: false,
+				staysActiveInBackground: true,
 				playsInSilentModeIOS: true,
-				staysActiveInBackground: false,
 				shouldDuckAndroid: false
+
+				// playThroughEarpieceAndroid: true
 			})
 
 			await videoRef.current?.stopAsync()

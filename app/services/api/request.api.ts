@@ -6,11 +6,11 @@ import instance from '@/services/api/interceptors.api'
 
 export const request = async <T>(config: AxiosRequestConfig) => {
 	const onSuccess = (response: AxiosResponse<T>) => {
+		console.log(response)
 		return response.data
 	}
 
 	const onError = (error: AxiosError<T>) => {
-		console.log(error)
 		Toast.show({
 			type: 'error',
 			text1: 'Request error',
